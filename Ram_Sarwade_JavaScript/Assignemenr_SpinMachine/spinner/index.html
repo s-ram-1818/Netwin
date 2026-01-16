@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slot Machine Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="rs-slot-container">
+        <h1>Slot Machine</h1>
+
+        <div class="rs-slots">
+            <div class="rs-slot" id="rs-slot1">0</div>
+            <div class="rs-slot" id="rs-slot2">0</div>
+            <div class="rs-slot" id="rs-slot3">0</div>
+        </div>
+
+        <button onclick="startGame()">Start Game</button>
+
+        <p class="rs-result" id="result"></p>
+        <p class="rs-attempts">Attempts: <span id="attempts">0</span></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

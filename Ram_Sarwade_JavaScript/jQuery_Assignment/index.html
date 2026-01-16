@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form class="rs-main" action="">
+      <h1>Register Here</h1>
+      <div class="rs-first-name">
+        <label for="first_name">First Name </label>
+        <br />
+        <input
+          type="text"
+          id="first_name"
+          placeholder="Enter First Name"
+          name="First Name"
+          oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')"
+        />
+      </div>
+      <div class="rs-last-name">
+        <label for="last_name">Last Name </label>
+        <br />
+        <input
+          type="text"
+          id="last_name"
+          placeholder="Enter Last Name"
+          name="Last Name"
+          oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')"
+        />
+      </div>
+      <div class="rs-gender">
+        <label for="">Gender:</label>
+        <br />
+
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="male" value="male" />
+        <label for="female">Female</label>
+        <input type="radio" id="female" name="gender" value="female" />
+      </div>
+      <div class="rs-email">
+        <label for="email">Enter Your Email id</label>
+        <br />
+        <div class="email-row">
+          <input type="email" id="email" name="email" />
+          <button class="rs-add-email">+</button>
+        </div>
+      </div>
+      <div class="rs-phone">
+        <label for="phone-no">Enter Your Mobile Number</label>
+        <br />
+        <input
+          type="tel"
+          id="phone-no"
+          name="phone"
+          placeholder="0123456789"
+          pattern="[0-9]{10}"
+          required
+          maxlength="10"
+        />
+      </div>
+      <div class="rs-address">
+        <button type="button" class="rs-add-address">Add Address</button>
+        <div class="address-block">
+          <label>Street</label><br />
+          <input type="text" name="street" required /><br />
+
+          <label>City</label><br />
+          <input type="text" name="city" required /><br />
+
+          <label>State</label><br />
+          <input type="text" name="state" required /><br />
+
+          <label>Country</label><br />
+          <input type="text" name="country" required /><br />
+
+          <label>PIN Code</label><br />
+          <input
+            type="text"
+            name="pincode"
+            maxlength="6"
+            required
+            oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+          /><br />
+
+          <button type="button" class="remove-address">Remove Address</button>
+          <hr />
+        </div>
+      </div>
+      <button class="submit">Submit</button>
+      <button class="import">Import</button>
+    </form>
+    <h2>Submitted Data</h2>
+
+    <table border="1" id="dataTable">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Email(s)</th>
+          <th>Phone</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- New rows will be added here -->
+      </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

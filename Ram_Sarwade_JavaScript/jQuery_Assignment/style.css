@@ -1,0 +1,146 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page background */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+input[type="radio"] {
+  vertical-align: middle;
+}
+
+/* Main form */
+.rs-main {
+  background: #fff;
+  width: 420px;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading */
+.rs-main h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Common field spacing */
+.rs-main > div {
+  margin-bottom: 15px;
+}
+
+/* Labels */
+.rs-main label {
+  font-size: 14px;
+  color: #555;
+  font-weight: 600;
+}
+
+/* Inputs */
+.rs-main input[type="text"],
+.rs-main input[type="email"],
+.rs-main input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* Input focus */
+.rs-main input:focus {
+  outline: none;
+  border-color: #4facfe;
+  box-shadow: 0 0 5px rgba(79, 172, 254, 0.4);
+}
+
+/* Gender */
+.rs-gender {
+  margin-top: 10px;
+}
+
+.rs-gender input {
+  margin-left: 5px;
+  margin-right: 15px;
+}
+
+/* Email row */
+.email-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.email-row input {
+  flex: 1;
+}
+
+/* Add & remove buttons */
+.rs-add-email,
+.rs-remove-email {
+  width: 40px;
+  border: none;
+  background: #4facfe;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.rs-remove-email {
+  background: #ff4d4d;
+}
+
+.rs-add-email:hover {
+  background: #2f8cff;
+}
+
+.rs-remove-email:hover {
+  background: #e60000;
+}
+
+/* Address section */
+.rs-address input {
+  margin-bottom: 10px;
+}
+
+/* Submit button */
+.submit,
+.import {
+  width: 100%;
+  padding: 12px;
+  background: #4facfe;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  transition: 0.3s;
+}
+
+.submit:hover {
+  background: #2f8cff;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .rs-main {
+    width: 90%;
+  }
+}

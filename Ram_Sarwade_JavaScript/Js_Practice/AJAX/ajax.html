@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>XMLHttpRequest GET & POST Example</h2>
+
+<button onclick="getData()">GET Data</button>
+<button onclick="postData()">POST Data</button>
+
+<script>
+
+//    GET REQUEST 
+  
+function getData() {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+    // xhr.open("GET", "example.json", true);
+
+
+    xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && (xhr.status === 201 || xhr.status === 200)) {
+            console.log("GET Response:");
+            console.log(JSON.parse(xhr.responseText));
+        }
+    };
+
+    xhr.onerror = function () {
+        console.log("GET request failed");
+    };
+
+    xhr.send(); // no body for GET
+}
+
+
+//    POST REQUEST (Send Data)
+
+function postData() {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "https://jsonplaceholder.typicode.com/posts", true);
+
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && (xhr.status === 201 || xhr.status === 200)) {
+            console.log("POST Response:");
+            // console.log(JSON.parse(xhr.responseText));
+        }
+    };
+
+    xhr.onerror = function () {
+        console.log("POST request failed");
+    };
+
+    const data = {
+        name: "Ram",
+        role: "Developer",
+        age: 22
+    };
+
+    xhr.send(JSON.stringify(data)); // body for POST
+}
+</script>
+
+</body>
+</html>
+
+
+<!-- readyState tells you how far the request has progressed (0 → 4).
+
+onload runs once, when the request is fully completed successfully. -->
+
+<!-- ready state -->
+ <!-- 0 → 1 → 2 → 3 → 4
+UNSENT → OPENED → HEADERS → LOADING → DONE -->
