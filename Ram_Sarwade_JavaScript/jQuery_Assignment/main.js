@@ -31,7 +31,7 @@ $(document).ready(function () {
     address++;
 
     $(".rs-address").append(`
-      <div class="address-block">
+      <div class="address-block extra">
         <label>Street</label><br />
         <input type="text" name="street" required /><br />
 
@@ -89,7 +89,7 @@ $(document).ready(function () {
       let country = $(this).find("input[name='country']").val();
       let pincode = $(this).find("input[name='pincode']").val();
 
-      addresses.push(`${street}, ${city}, ${state}, ${country} - ${pincode}`);
+      addresses.push(`${street}, ${city}, ${state}, ${country}, ${pincode}`);
     });
 
     $("#dataTable tbody").append(`
@@ -106,25 +106,74 @@ $(document).ready(function () {
     // Reset form
 
     this.reset();
-    $(".address-block").remove();
+    $(".extra").remove();
     $(".email-block").remove();
+    address = 0;
+    emailCount = 0;
   });
+
+  // import data from json file
+  // $(".import").on("click", function (e) {
+  //   e.preventDefault();
+
+  //   $.get("example.json", function (res) {
+  //     for (const key in res) {
+  //       if (!Object.hasOwn(res, key)) continue;
+
+  //       // Radio button handling
+  //       if (key === "gender") {
+  //         $(`input[name="gender"][value="${res[key]}"]`).prop("checked", true);
+  //       }
+  //       // Normal inputs (by name)
+  //       else {
+  //         $(`input[name="${key}"]`).val(res[key]);
+  //       }
+  //     }
+  //   });
+  // });
+  // import data from txt file
   $(".import").on("click", function (e) {
     e.preventDefault();
 
-    $.get("example.json", function (res) {
-      for (const key in res) {
-        if (!Object.hasOwn(res, key)) continue;
+    $.get("example.txt", function (res) {
+      // Split data by comma
+      const lines = res.split(",");
 
-        // Radio button handling
+      lines.forEach((line) => {
+        if (!line.trim()) return; // skip empty lines
+
+        // Split key and value
+        let [key, value] = line.split(":");
+
+        // Remove extra spaces
+        key = key.trim();
+        value = value.trim();
+
+        // Handle radio button (gender)
         if (key === "gender") {
-          $(`input[name="gender"][value="${res[key]}"]`).prop("checked", true);
+          $(`input[name="gender"][value="${value}"]`).prop("checked", true);
+        } else if (key == "email") {
+          // Handle multiple emails
+          const emailValues = value.split(";").map((email) => email.trim());
+          emailValues.forEach((email, index) => {
+            if (index === 0) {
+              $(`input[name="email"]`).val(email);
+            } else if (index < maxEmails) {
+              // Add new email fields if within limit
+              $(".rs-email").append(`
+      <div class="email-row email-block">
+        <input type="email" name="email" value="${email}" required />
+        <button type="button" class="rs-remove-email">-</button>
+      </div>
+    `);
+            }
+          });
         }
-        // Normal inputs (by name)
+        // Handle normal inputs
         else {
-          $(`input[name="${key}"]`).val(res[key]);
+          $(`input[name="${key}"]`).val(value);
         }
-      }
+      });
     });
   });
 });

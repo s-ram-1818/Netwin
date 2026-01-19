@@ -1,9 +1,11 @@
-Last Name: Ram,
-Last Name: Sarwade,
-gender: male,
-Email Address: ramsarwade1818@gmail.com,
-phone: 7498247355
-street[]:{HariVishwa},
-city[]:{nashik},
-state[]:{maharashtra},
-country[]:{India}
+First Name:Ram,
+Last Name:Sarwade,
+gender:male,
+email:ramsarwade1818@gmail.com;sham@gmail.com,
+phone:7498247355,
+street:PathardiPhata,
+city:Nashik,
+state:Maharashtra,
+country:India,
+pincode:422001
+
