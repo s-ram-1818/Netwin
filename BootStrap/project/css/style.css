@@ -1,0 +1,55 @@
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.banner-content h1 {
+  font-size: 52px;
+  font-weight: 700;
+}
+.banner-content h1 span {
+  color: #40a3f3;
+}
+.banner-content ul {
+  list-style: none;
+  font-size: 20px;
+}
+.banner-content p {
+  font-size: 20px;
+}
+
+.banner-content ul i {
+  color: #40a3f3;
+}
+.banner-content-btn button {
+  width: 50%;
+}
+.banner-content-btn button:first-child {
+  background: linear-gradient(to right, #40a3f3, #528fc0);
+  color: #fff;
+  border: none;
+  transition: 0.3s;
+}
+.banner-Form {
+  padding: 40px;
+  border-radius: 15px;
+}
+.banner-Form h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.btn-submit {
+  border: 1px solid #40a3f3;
+
+  transition: 0.3s;
+}
+.btn-submit:hover {
+  background-color: #40a3f3;
+
+  border: none;
+}
+
+.stats h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #40a3f3;
+}
