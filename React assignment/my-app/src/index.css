@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+body {
+  background-color: rgb(255, 255, 255);
+}
+/* Navbar */
+.sw-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  z-index: 1000;
+  top: 0%;
+}
+
+.logo {
+  color: #fc8019;
+  font-size: 28px;
+}
+
+.sw-navbar a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.cart-btn {
+  background: #fc8019;
+  border: none;
+  padding: 8px 15px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hero */
+.sw-hero {
+  background: linear-gradient(to right, #fc8019, #ff9f45);
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+}
+
+.sw-hero h1 {
+  font-size: 35px;
+  /* margin-bottom: 20px; */
+}
+
+.sw-search-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.sw-search-box input {
+  width: 300px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.sw-search-box button {
+  padding: 12px 20px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+/* Restaurants */
+.sw-restaurants,
+.sw-kitchen {
+  padding: 50px;
+}
+
+.sw-restaurants,
+.sw-kitchen,
+.sw-restaurants h2,
+.sw-kitchen h2 {
+  margin-bottom: 20px;
+}
+
+.sw-card-container {
+  display: flex;
+  gap: 25px;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 250px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.card {
+  min-width: 200px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 10px;
+}
+
+.card p {
+  margin: 0 10px;
+  color: gray;
+}
+
+.card span {
+  margin: 10px;
+  display: block;
+  font-weight: bold;
+}
+
+/* Footer */
+.sw-mainfooter {
+  background: #f2f2f2;
+  padding: 15px;
+  text-align: center;
+  margin-top: 50px;
+}
+.sw-app img {
+  height: fit-content;
+  width: 100%;
+}
+.sw-aboutus {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+.sw-footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.sw-company {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  font-size: 12px;
+}
+.sw-contactus {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-size: 12px;
+}
+.sw-availablein {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  font-size: 12px;
+}
+.sw-lifeatswiggy {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-size: 12px;
+}
+.sw-lifeatswiggysub {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sw-contactussub {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sw-sociallogo {
+  display: flex;
+  gap: 5px;
+  height: 15px;
+  width: fit-content;
+}
+.sw-sociallogo img {
+  cursor: pointer;
+}
