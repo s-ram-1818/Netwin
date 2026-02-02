@@ -3,7 +3,14 @@ import { TodoContext } from "../context/TodoContext";
 import { ThemeContext } from "../context/ThemeContext";
 
 const TodoApp = () => {
-  const { todos, setTodos, editIndex, setEditIndex } = useContext(TodoContext);
+  const {
+    todos,
+    setTodos,
+    editIndex,
+    setEditIndex,
+    completedTodos,
+    setCompletedTodos,
+  } = useContext(TodoContext);
 
   const { darkMode, toggleTheme } = useContext(ThemeContext);
 
@@ -27,6 +34,15 @@ const TodoApp = () => {
   const editTodo = (index) => {
     setText(todos[index]);
     setEditIndex(index);
+  };
+  const iscompleted = (e, index) => {
+    if (e.target.checked) {
+      const completed = todos[index];
+      setCompletedTodos([...completedTodos, completed]);
+    } else {
+      const filtered = completedTodos.filter((todo) => todo !== todos[index]);
+      setCompletedTodos(filtered);
+    }
   };
 
   const deleteTodo = (index) => {
@@ -66,8 +82,24 @@ const TodoApp = () => {
               darkMode ? "bg-secondary text-light" : ""
             }`}
           >
-            {todo}
+            <span
+              style={{
+                textDecoration: completedTodos.includes(todo)
+                  ? "line-through"
+                  : "none",
+              }}
+            >
+              {todo}
+            </span>
             <div>
+              <label htmlFor={`completed-${i}`}>Completed</label>
+              <input
+                type="checkbox"
+                onClick={(e) => iscompleted(e, i)}
+                className="m-3"
+                name="Completed"
+                id={`completed-${i}`}
+              />
               <button
                 className="btn btn-warning btn-sm me-2"
                 onClick={() => editTodo(i)}
