@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { TodoContext } from "../context/TodoContext";
 import { ThemeContext } from "../context/ThemeContext";
 
@@ -10,11 +10,11 @@ const TodoApp = () => {
     setEditIndex,
     completedTodos,
     setCompletedTodos,
+    text,
+    setText,
   } = useContext(TodoContext);
 
   const { darkMode, toggleTheme } = useContext(ThemeContext);
-
-  const [text, setText] = useState("");
 
   const addTodo = () => {
     if (!text) return;

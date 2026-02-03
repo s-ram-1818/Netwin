@@ -45,33 +45,35 @@ const Navbar = () => {
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  to="/menu"
+                  to="/services"
                 >
-                  Menu
+                  Services
                 </NavLink>
                 <ul className="dropdown-menu">
                   <li>
-                    <NavLink className="dropdown-item" to="/menu/action">
-                      Action
+                    <NavLink className="dropdown-item" to="/services/appdev">
+                      AppDevelopment
                     </NavLink>
                   </li>
+                  <hr className="dropdown-divider" />
                   <li>
                     <NavLink
                       className="dropdown-item"
-                      to="/menu/another-action"
+                      to="/services/intelligence"
                     >
-                      Another action
+                      Intelligence
                     </NavLink>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
+
                   <li>
                     <NavLink
                       className="dropdown-item"
-                      to="/menu/something-else"
+                      to="/services/digitaltransformation"
                     >
-                      Something else here
+                      Digital Transformation
                     </NavLink>
                   </li>
                 </ul>
