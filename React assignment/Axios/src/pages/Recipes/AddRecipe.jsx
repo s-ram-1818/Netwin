@@ -1,48 +1,31 @@
 import React, { useState } from "react";
-import axiosInstance from "../../api/axios.instance.js";
+import axiosInstance from "../../services/axios.instance.js";
 import { useContext } from "react";
-import { recipeContext } from "../../context/recipe_context.jsx";
+import { recipeContext } from "./recipe_context.jsx";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useRef } from "react";
-const EditRecipe = () => {
-  const editRef = useRef(null);
+import { useRef, useEffect } from "react";
+
+const AddRecipe = () => {
   const navigate = useNavigate();
   const { recipes, setRecipes } = useContext(recipeContext);
-  const { id } = useParams();
-  const editingRecipe = recipes[id];
-  console.log("Editing Recipe:", editingRecipe);
+  const addRef = useRef(null);
 
+  useEffect(() => {
+    addRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     cuisine: "Italian",
     difficulty: "Easy",
     servings: 1,
+
     ingredients: "",
     instructions: "",
+
     image: "",
     rating: 0,
     description: "",
   });
-  useEffect(() => {
-    editRef.current.scrollIntoView({ behavior: "smooth" });
-  }, []);
-  useEffect(() => {
-    if (editingRecipe) {
-      setFormData({
-        name: editingRecipe.name || "",
-        cuisine: editingRecipe.cuisine || "Italian",
-        difficulty: editingRecipe.difficulty || "Easy",
-        servings: editingRecipe.servings || 1,
-        ingredients: editingRecipe.ingredients?.join("\n") || "",
-        instructions: editingRecipe.instructions?.join("\n") || "",
-        image: editingRecipe.image || "",
-        rating: editingRecipe.rating || 0,
-        description: editingRecipe.description || "",
-      });
-    }
-  }, [editingRecipe]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -66,7 +49,7 @@ const EditRecipe = () => {
     e.preventDefault();
 
     const newRecipe = {
-      id: id,
+      id: Math.random(),
       name: formData.name,
       cuisine: formData.cuisine,
       difficulty: formData.difficulty,
@@ -78,13 +61,8 @@ const EditRecipe = () => {
       image: formData.image,
       rating: parseFloat(formData.rating),
     };
-    setRecipes((prevRecipes) => {
-      const updatedRecipes = prevRecipes.map((recipe, index) =>
-        index === parseInt(id) ? newRecipe : recipe,
-      );
-      return updatedRecipes;
-    });
 
+    setRecipes([...recipes, newRecipe]);
     setFormData({
       name: "",
       cuisine: "Italian",
@@ -103,9 +81,9 @@ const EditRecipe = () => {
   };
 
   return (
-    <div className="container my-5" ref={editRef}>
-      <h1>Edit Recipe</h1>
-      <form onSubmit={handleSubmit} className="needs-validation">
+    <div className="container my-5 " ref={addRef}>
+      <h1>Add New Recipe</h1>
+      <form onSubmit={handleSubmit} className="needs-validation ">
         <div className="row mb-3">
           <div className="col-md-6">
             <label htmlFor="name" className="form-label">
@@ -247,7 +225,7 @@ const EditRecipe = () => {
 
         <div className="d-flex gap-2">
           <button type="submit" className="btn btn-primary">
-            Update Recipe
+            Add Recipe
           </button>
           <button
             type="button"
@@ -262,4 +240,4 @@ const EditRecipe = () => {
   );
 };
 
-export default EditRecipe;
+export default AddRecipe;
