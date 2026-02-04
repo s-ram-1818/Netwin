@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import getRecipe from "../api/getRecipe";
+import getRecipe from "../../api/getRecipe";
 import "./Recipe.css";
 import AddRecipe from "./AddRecipe.jsx";
 import { useContext } from "react";
-import { recipeContext } from "../context/recipe_context.jsx";
-
+import { recipeContext } from "../../context/recipe_context.jsx";
+import { useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 const Recipe = () => {
+  const navigate = useNavigate();
   const { recipes, setRecipes, expandedIndex, setExpandedIndex } =
     React.useContext(recipeContext);
 
@@ -22,6 +24,10 @@ const Recipe = () => {
 
   const handleStartCooking = (recipeName) => {
     alert(`Started cooking: ${recipeName}`);
+  };
+
+  const handleDeleteRecipe = (index) => {
+    setRecipes(recipes.filter((_, i) => i !== index));
   };
 
   return (
@@ -98,23 +104,45 @@ const Recipe = () => {
 
               <div className="recipe-buttons">
                 <button
-                  className="btn btn-view"
+                  className="btn btn-view btn-primary"
                   onClick={() => handleViewDetails(index)}
                 >
                   {expandedIndex === index ? "Hide Details" : "View Details"}
                 </button>
                 <button
-                  className="btn btn-cook"
+                  className="btn btn-cook btn-success"
                   onClick={() => handleStartCooking(recipe.name)}
                 >
                   Start Cooking
+                </button>
+
+                <button
+                  className="btn btn-delete btn-danger"
+                  onClick={() => handleDeleteRecipe(index)}
+                >
+                  Delete Recipe
+                </button>
+                <button
+                  className="btn btn-edit btn-warning"
+                  onClick={() => navigate(`/recipes/edit/${index}`)}
+                >
+                  Edit Recipe
                 </button>
               </div>
             </div>
           </div>
         ))}
       </div>
-      <AddRecipe />
+      <div className="add-recipe container text-center my-4">
+        <button
+          className="btn btn-primary m-auto"
+          onClick={() => navigate("/recipes/add")}
+        >
+          Add New Recipe
+        </button>
+      </div>
+
+      <Outlet />
     </div>
   );
 };
